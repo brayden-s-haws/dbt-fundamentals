@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: Staged payment data from Stripe.
+    columns: 
+      - name: payment_id
+        description: Primary key for Stripe transactions.
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: "{{ doc('payment_status') }}"
+        tests:
+          - accepted_values:
+             values:
+                - success
+                - fail
+             
+
+    
